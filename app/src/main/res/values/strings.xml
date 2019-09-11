@@ -1,3 +1,16 @@
 <resources>
+
     <string name="app_name">MasterBlock</string>
+    <string name="start_game">Start a new game</string>
+    <string name="game_over">Game over</string>
+    <string name="continue_game">Continue</string>
+    <string name="on_exit">Click again to exit</string>
+    <string name="score">Score</string>
+    <string name="high_score">High score</string>
+
+    <string name="on_game_restart_title">Restart the game</string>
+    <string name="on_game_restart_message">The game is still running.\nAre you sure you want to start a new game?</string>
+    <string name="on_game_restart_positive">Yes</string>
+    <string name="on_game_restart_negative">No</string>
+
 </resources>

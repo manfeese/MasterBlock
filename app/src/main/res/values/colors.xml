@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
     <color name="colorBackground">#FF2B2B27</color>
-    <color name="colorGrid">#FF303030</color>
     <color name="colorGameField">#FF42423E</color>
-    <color name="colorText">#EBEB7F</color>
-
-    <color name="colorShadow">#4D4D49</color>
-    <color name="color0">#CC7171</color>
-    <color name="color1">#CCC271</color>
-    <color name="color2">#CC719C</color>
-    <color name="color3">#87CC71</color>
-    <color name="color4">#71CC9e</color>
-    <color name="color5">#71AECC</color>
-    <color name="color6">#7571CC</color>
-    <color name="color7">#B671CC</color>
+    <color name="colorMenu">@android:color/white</color>
+    <color name="colorShadow">#4D5D59</color>
 
 </resources>

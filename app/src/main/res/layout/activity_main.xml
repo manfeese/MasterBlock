@@ -1,23 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+    android:background="@color/colorBackground"
+
     tools:context="com.manfeese.blocks.MainActivity">
 
 
-    <com.manfeese.blocks.view.BlocksView
-        android:layout_height="match_parent"
-        android:layout_width="wrap_content"
-        android:background="@color/colorBackground"
-        app:color="@android:color/white"
-        app:columns="10"
-        app:rows="20"
-        app:margin="2"
-        />
+    <!--game frame layout-->
+    <RelativeLayout
+        android:id="@+id/game_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <LinearLayout
+            android:id="@+id/menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/scoreView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:layout_toRightOf="@id/menuButton"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:textColor="@color/colorMenu"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/highScoreView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:textColor="@color/colorMenu"
+
+                android:textSize="18sp" />
+
+
+            <ImageButton
+                android:id="@+id/menuButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_menu_36dp"
+                android:layout_margin="5dp"
+                android:onClick="pauseGame"
+                />
+
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/game"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/menu"
+            android:background="@color/colorBackground"
+            >
+
+            <com.manfeese.blocks.view.BlocksView
+                android:id="@+id/gameFieldBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:bv_color="@color/colorGameField"
+                app:bv_margin="2"
+                app:bv_columns="10"
+                app:bv_rows="20"
+                />
+
+            <com.manfeese.blocks.view.BlocksView
+                android:id="@+id/gameField"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:bv_sizeOf="@id/gameFieldBackground"
+                app:bv_columns="10"
+                app:bv_rows="20"
+                />
+
+            <com.manfeese.blocks.view.BlocksView
+                android:id="@+id/shadow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bv_sizeOf="@id/gameFieldBackground"
+                app:bv_columns="4"
+                app:bv_rows="4"
+
+                />
+
+            <com.manfeese.blocks.view.BlocksView
+                android:id="@+id/figure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bv_sizeOf="@id/gameFieldBackground"
+                app:bv_columns="4"
+                app:bv_rows="4"
+
+                />
+
+            <com.manfeese.blocks.view.BlocksView
+                android:id="@+id/nextFigure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="6dp"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:bv_rows="4"
+                app:bv_columns="4"
+                app:bv_margin="2"
+                app:bv_scaled="false"
+                app:bv_cellSize="35"
+
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
+
+
+    <!--Menu group layout    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/menu_layer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E0222222">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/gameOverButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="40dp"
+                android:onClick="gameOverContinueGame"
+                android:text="@string/game_over"
+                android:textColor="@color/colorMenu"
+                android:textSize="48sp" />
+
+            <TextView
+                android:id="@+id/startGameButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gameOverButton"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:onClick="startGame"
+                android:text="@string/start_game"
+                android:textColor="@color/colorMenu"
+                android:textSize="36sp" />
+
+
+<!--            <TextView-->
+<!--                android:id="@+id/exitGameButton"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_below="@id/startGameButton"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:text="@string/exit_game"-->
+
+<!--                android:textColor="@color/colorMenu"-->
+<!--                android:textSize="36sp" />-->
+
+        </RelativeLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

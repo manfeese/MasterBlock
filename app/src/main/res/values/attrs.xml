@@ -3,13 +3,14 @@
 
     <declare-styleable name="BlocksView">
 
-        <attr name="columns" format="integer"></attr>
+        <attr name="bv_columns" format="integer"/>
+        <attr name="bv_rows" format="integer"/>
+        <attr name="bv_color" format="color"/>
 
-        <attr name="rows" format="integer"></attr>
-
-        <attr name="margin" format="integer"></attr>
-
-        <attr name="color" format="color"></attr>
+        <attr name="bv_scaled" format="boolean"/>
+        <attr name="bv_sizeOf" format="reference"/>
+        <attr name="bv_cellSize" format="float"/>
+        <attr name="bv_margin" format="float"/>
 
     </declare-styleable>
 

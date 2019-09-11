@@ -2,22 +2,22 @@ package com.manfeese.blocks.view.utils;
 
 import androidx.annotation.NonNull;
 
-import com.manfeese.blocks.view.data.Blocks;
+import com.manfeese.blocks.view.BlocksView;
 
 public class CoordinateUtils {
 
-    public static float getViewCoordinate(@NonNull Blocks.StyleParams params, @NonNull ViewCoordinate measure) {
+    public static float getViewCoordinate(@NonNull BlocksView view, @NonNull ViewCoordinate measure) {
 
         int measureValue;
 
         switch (measure) {
 
             case WIDTH:
-                measureValue = params.getColumns();
+                measureValue = view.getBlock().getColumns();
                 break;
 
             case HEIGHT:
-                measureValue =params.getRows();
+                measureValue = view.getBlock().getRows();
                 break;
 
             default:
@@ -25,11 +25,11 @@ public class CoordinateUtils {
 
         }
 
-        return getViewCoordinate(params, measure, measureValue);
+        return getViewCoordinate(view, measure, measureValue);
 
     }
 
-    public static float getViewCoordinate(@NonNull Blocks.StyleParams params, @NonNull ViewCoordinate measure, int measureValue) {
+    public static float getViewCoordinate(@NonNull BlocksView view, @NonNull ViewCoordinate measure, int measureValue) {
 
         float result;
 
@@ -39,12 +39,12 @@ public class CoordinateUtils {
             case HEIGHT:
             case LEFT:
             case TOP:
-                result = getCoordinate(params, measureValue) + params.getMargin();
+                result = getCoordinate(view, measureValue) + view.getMargin();
                 break;
 
             case RIGHT:
             case BOTTOM:
-                result = getCoordinate(params, measureValue + 1);
+                result = getCoordinate(view, measureValue + 1);
                 break;
 
             default:
@@ -55,38 +55,30 @@ public class CoordinateUtils {
 
     }
 
-    private static float getViewCoordinate(@NonNull Blocks.StyleParams params, int index) {
 
-        float cellSize = params.getCellSize();
-        float margin = params.getMargin();
+    public static float getCoordinate(@NonNull BlocksView view, int index) {
 
-        return index * (cellSize + margin) + margin;
-
-    }
-
-    public static float getCoordinate(@NonNull Blocks.StyleParams params, int index) {
-
-        float cellSize = params.getCellSize();
-        float margin = params.getMargin();
+        float cellSize = view.getCellSize();
+        float margin = view.getMargin();
 
         return index * (cellSize + margin);
 
     }
 
-    public static int getPosition(@NonNull Blocks.StyleParams params, float coordinate) {
+    public static int getPosition(@NonNull BlocksView view, float coordinate) {
 
-        float cellSize = params.getCellSize();
-        float margin = params.getMargin();
+        float cellSize = view.getCellSize();
+        float margin = view.getMargin();
 
-        return (int) ((coordinate - margin) / (cellSize + margin));
+        return (int) ((coordinate - margin) / (cellSize));
 
     }
 
-    public static float getCellSize(@NonNull Blocks.StyleParams params, float height, float width) {
+    public static float getCellSize(@NonNull BlocksView view, float height, float width) {
 
-        float margin = params.getMargin();
-        float rows = params.getRows();
-        float columns = params.getColumns();
+        float margin = view.getMargin();
+        float rows = view.getBlock().getRows();
+        float columns = view.getBlock().getColumns();
 
         float cellHeight = (height - margin) / rows - margin;
         float cellWidth = (width - margin) / columns - margin;
